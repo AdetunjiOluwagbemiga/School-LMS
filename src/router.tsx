@@ -1,8 +1,23 @@
 import { createRouter, createRoute, createRootRoute, Outlet, redirect } from '@tanstack/react-router'
 import { AppShell } from '@/components/layout/AppShell'
-import { LandingPage } from '@/pages/LandingPage'
+
+// Public website pages
+import { HomePage } from '@/pages/website/HomePage'
+import { AboutPage } from '@/pages/website/AboutPage'
+import { AdmissionsPage } from '@/pages/website/AdmissionsPage'
+import { CurriculumPage } from '@/pages/website/CurriculumPage'
+import { StaffPage } from '@/pages/website/StaffPage'
+import { NewsPage } from '@/pages/website/NewsPage'
+import { CalendarPage } from '@/pages/website/CalendarPage'
+import { GalleryPage } from '@/pages/website/GalleryPage'
+import { AlumniPage } from '@/pages/website/AlumniPage'
+import { ContactPage } from '@/pages/website/ContactPage'
+
+// Auth
 import { LoginPage } from '@/pages/LoginPage'
 import { RegisterPage } from '@/pages/RegisterPage'
+
+// LMS pages
 import { StudentDashboard } from '@/pages/student/StudentDashboard'
 import { MyCoursesPage } from '@/pages/student/MyCoursesPage'
 import { CourseDetailPage } from '@/pages/student/CourseDetailPage'
@@ -24,16 +39,21 @@ import { SettingsPage } from '@/pages/SettingsPage'
 // Root
 const rootRoute = createRootRoute({ component: () => <Outlet /> })
 
+// Public website routes
+const indexRoute = createRoute({ getParentRoute: () => rootRoute, path: '/', component: HomePage })
+const aboutRoute = createRoute({ getParentRoute: () => rootRoute, path: '/about', component: AboutPage })
+const admissionsRoute = createRoute({ getParentRoute: () => rootRoute, path: '/admissions', component: AdmissionsPage })
+const curriculumRoute = createRoute({ getParentRoute: () => rootRoute, path: '/curriculum', component: CurriculumPage })
+const staffRoute = createRoute({ getParentRoute: () => rootRoute, path: '/staff', component: StaffPage })
+const newsRoute = createRoute({ getParentRoute: () => rootRoute, path: '/news', component: NewsPage })
+const calendarRoute = createRoute({ getParentRoute: () => rootRoute, path: '/calendar', component: CalendarPage })
+const galleryRoute = createRoute({ getParentRoute: () => rootRoute, path: '/gallery', component: GalleryPage })
+const alumniRoute = createRoute({ getParentRoute: () => rootRoute, path: '/alumni', component: AlumniPage })
+const contactRoute = createRoute({ getParentRoute: () => rootRoute, path: '/contact', component: ContactPage })
+
 // Auth routes
 const loginRoute = createRoute({ getParentRoute: () => rootRoute, path: '/login', component: LoginPage })
 const registerRoute = createRoute({ getParentRoute: () => rootRoute, path: '/register', component: RegisterPage })
-
-// Landing page
-const indexRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/',
-  component: LandingPage,
-})
 
 // App shell
 const appRoute = createRoute({ getParentRoute: () => rootRoute, path: '/app', component: AppShell })
@@ -65,12 +85,12 @@ const adminUsersRoute = createRoute({ getParentRoute: () => adminRoute, path: '/
 const parentRoute = createRoute({ getParentRoute: () => appRoute, path: '/parent' })
 const parentDashboardRoute = createRoute({ getParentRoute: () => parentRoute, path: '/dashboard', component: ParentDashboard })
 
-// Shared
+// Shared app routes
 const notificationsRoute = createRoute({ getParentRoute: () => appRoute, path: '/notifications', component: NotificationsPage })
 const profileRoute = createRoute({ getParentRoute: () => appRoute, path: '/profile', component: ProfilePage })
 const settingsRoute = createRoute({ getParentRoute: () => appRoute, path: '/settings', component: SettingsPage })
 
-// App redirect
+// App index redirect
 const appIndexRoute = createRoute({
   getParentRoute: () => appRoute,
   path: '/',
@@ -79,6 +99,15 @@ const appIndexRoute = createRoute({
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
+  aboutRoute,
+  admissionsRoute,
+  curriculumRoute,
+  staffRoute,
+  newsRoute,
+  calendarRoute,
+  galleryRoute,
+  alumniRoute,
+  contactRoute,
   loginRoute,
   registerRoute,
   appRoute.addChildren([
