@@ -28,6 +28,7 @@ import { ForumsPage } from '@/pages/student/ForumsPage'
 import { LearningPathPage } from '@/pages/student/LearningPathPage'
 import { TeacherDashboard } from '@/pages/teacher/TeacherDashboard'
 import { GradebookPage } from '@/pages/teacher/GradebookPage'
+import { ReportCardPage } from '@/pages/teacher/ReportCardPage'
 import { AnalyticsPage } from '@/pages/teacher/AnalyticsPage'
 import { SchoolDashboard } from '@/pages/admin/SchoolDashboard'
 import { UsersPage } from '@/pages/admin/UsersPage'
@@ -74,6 +75,7 @@ const teachRoute = createRoute({ getParentRoute: () => appRoute, path: '/teach' 
 const teacherDashboardRoute = createRoute({ getParentRoute: () => teachRoute, path: '/dashboard', component: TeacherDashboard })
 const teacherCoursesRoute = createRoute({ getParentRoute: () => teachRoute, path: '/courses', component: MyCoursesPage })
 const gradebookRoute = createRoute({ getParentRoute: () => teachRoute, path: '/gradebook', component: GradebookPage })
+const reportCardsRoute = createRoute({ getParentRoute: () => teachRoute, path: '/report-cards', component: ReportCardPage })
 const teacherAnalyticsRoute = createRoute({ getParentRoute: () => teachRoute, path: '/analytics', component: AnalyticsPage })
 
 // Admin routes
@@ -126,6 +128,7 @@ const routeTree = rootRoute.addChildren([
       teacherDashboardRoute,
       teacherCoursesRoute,
       gradebookRoute,
+      reportCardsRoute,
       teacherAnalyticsRoute,
     ]),
     adminRoute.addChildren([

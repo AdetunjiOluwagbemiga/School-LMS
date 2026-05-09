@@ -33,8 +33,8 @@ function getNavItems(role: AppRole | null): NavItem[] {
         { label: 'Dashboard', href: '/app/teach/dashboard', icon: LayoutDashboard },
         { label: 'My Courses', href: '/app/teach/courses', icon: BookOpen },
         { label: 'Gradebook', href: '/app/teach/gradebook', icon: ClipboardList },
+        { label: 'Report Cards', href: '/app/teach/report-cards', icon: FileText },
         { label: 'Analytics', href: '/app/teach/analytics', icon: TrendingUp },
-        { label: 'Question Banks', href: '/app/teach/questions', icon: Brain },
       ]
     case 'student':
       return [
