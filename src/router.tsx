@@ -1,5 +1,6 @@
 import { createRouter, createRoute, createRootRoute, Outlet, redirect } from '@tanstack/react-router'
 import { AppShell } from '@/components/layout/AppShell'
+import { LandingPage } from '@/pages/LandingPage'
 import { LoginPage } from '@/pages/LoginPage'
 import { RegisterPage } from '@/pages/RegisterPage'
 import { StudentDashboard } from '@/pages/student/StudentDashboard'
@@ -27,11 +28,11 @@ const rootRoute = createRootRoute({ component: () => <Outlet /> })
 const loginRoute = createRoute({ getParentRoute: () => rootRoute, path: '/login', component: LoginPage })
 const registerRoute = createRoute({ getParentRoute: () => rootRoute, path: '/register', component: RegisterPage })
 
-// Root redirect
+// Landing page
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/',
-  beforeLoad: () => { throw redirect({ to: '/login' }) }
+  component: LandingPage,
 })
 
 // App shell
