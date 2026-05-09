@@ -3,7 +3,7 @@ import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/hooks/useAuth'
 import { useTenantSettings } from '@/hooks/useTenantSettings'
 import type { TenantSettings, TenantBranding, TenantHomepage, TenantPages } from '@/hooks/useTenantSettings'
-import { Save, Globe, Palette, LayoutTemplate, Eye, Plus, Trash2, CircleCheck as CheckCircle, CircleAlert as AlertCircle, Loader2 } from 'lucide-react'
+import { Save, Globe, Palette, LayoutTemplate, Eye, Plus, Trash2, CircleCheck as CheckCircle, CircleAlert as AlertCircle, Loader as Loader2 } from 'lucide-react'
 
 type Tab = 'branding' | 'homepage' | 'pages'
 
