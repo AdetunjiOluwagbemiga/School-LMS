@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { WebsiteLayout } from '@/components/website/WebsiteLayout'
 import { supabase } from '@/lib/supabase'
 import { ArrowRight, CircleCheck as CheckCircle, Download, CircleAlert as AlertCircle } from 'lucide-react'
+import { useTenantSettings } from '@/hooks/useTenantSettings'
 
 const DEMO_TENANT = 'a0000000-0000-0000-0000-000000000001'
 
@@ -29,6 +30,8 @@ const steps = [
 ]
 
 export function AdmissionsPage() {
+  const { settings } = useTenantSettings()
+  const { pages, branding } = settings
   const [form, setForm] = useState({ full_name: '', email: '', phone: '', subject: 'Admissions Enquiry', message: '', inquiry_type: 'admissions' })
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
@@ -52,9 +55,9 @@ export function AdmissionsPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 to-slate-900/50" />
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="text-xs font-semibold text-brand-400 uppercase tracking-wider mb-3">Admissions</div>
-          <h1 className="text-5xl font-extrabold text-white mb-4">Join Oakridge Academy</h1>
+          <h1 className="text-5xl font-extrabold text-white mb-4">Join {branding.school_name}</h1>
           <p className="text-xl text-slate-300 max-w-2xl">
-            Applications for the 2026/2027 academic year are open. We welcome students from all backgrounds who share our commitment to excellence.
+            {pages.admissions_intro}
           </p>
         </div>
       </section>

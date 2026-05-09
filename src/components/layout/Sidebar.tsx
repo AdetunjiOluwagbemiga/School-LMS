@@ -1,5 +1,5 @@
 import { Link, useLocation } from '@tanstack/react-router'
-import { LayoutDashboard, BookOpen, Users, ChartBar as BarChart3, Award, MessageSquare, Settings, GraduationCap, ClipboardList, Star, BookMarked, Shield, Building2, ChevronRight, Bell, FileText, TrendingUp, Brain } from 'lucide-react'
+import { LayoutDashboard, BookOpen, Users, ChartBar as BarChart3, Award, MessageSquare, Settings, GraduationCap, ClipboardList, Star, BookMarked, Shield, Building2, ChevronRight, Bell, FileText, TrendingUp, Brain, Globe } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { useAuth } from '@/hooks/useAuth'
 import type { AppRole } from '@/types'
@@ -26,7 +26,7 @@ function getNavItems(role: AppRole | null): NavItem[] {
         { label: 'Enrollments', href: '/app/admin/enrollments', icon: ClipboardList },
         { label: 'Reports', href: '/app/admin/reports', icon: FileText },
         { label: 'Compliance', href: '/app/admin/compliance', icon: Shield },
-        { label: 'Branding', href: '/app/admin/branding', icon: Star },
+        { label: 'Site Editor', href: '/app/admin/site-editor', icon: Globe },
       ]
     case 'teacher':
       return [

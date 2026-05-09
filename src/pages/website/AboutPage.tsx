@@ -1,6 +1,7 @@
 import { WebsiteLayout } from '@/components/website/WebsiteLayout'
 import { Link } from '@tanstack/react-router'
 import { ArrowRight, Award, BookOpen, Globe, Shield, Users, CircleCheck as CheckCircle } from 'lucide-react'
+import { useTenantSettings } from '@/hooks/useTenantSettings'
 
 const values = [
   { icon: BookOpen, title: 'Academic Excellence', desc: 'We set high expectations and provide the support every student needs to exceed them.' },
@@ -30,6 +31,9 @@ const milestones = [
 ]
 
 export function AboutPage() {
+  const { settings } = useTenantSettings()
+  const { pages } = settings
+
   return (
     <WebsiteLayout>
       {/* Hero */}
@@ -51,11 +55,11 @@ export function AboutPage() {
           <div>
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Our Mission</h2>
             <p className="text-slate-600 leading-relaxed text-lg mb-6">
-              To provide an outstanding education that develops the whole child — academically, socially, morally, and physically — equipping them with the knowledge, skills, and values to thrive in a complex and interconnected world.
+              {pages.about_mission}
             </p>
             <h2 className="text-3xl font-bold text-slate-900 mb-6 mt-10">Our Vision</h2>
             <p className="text-slate-600 leading-relaxed text-lg">
-              To be Africa's most admired school, recognised globally for academic excellence, innovative teaching, and the extraordinary achievements of our alumni.
+              {pages.about_vision}
             </p>
           </div>
           <div className="rounded-2xl overflow-hidden shadow-xl">

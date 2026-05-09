@@ -2,19 +2,19 @@ import { useState } from 'react'
 import { WebsiteLayout } from '@/components/website/WebsiteLayout'
 import { supabase } from '@/lib/supabase'
 import { Phone, Mail, MapPin, Clock, CircleCheck as CheckCircle, CircleAlert as AlertCircle, ArrowRight } from 'lucide-react'
+import { useTenantSettings } from '@/hooks/useTenantSettings'
 
 const DEMO_TENANT = 'a0000000-0000-0000-0000-000000000001'
 
-const contactInfo = [
-  { icon: Phone, label: 'Main Office', value: '+234 801 234 5678', href: 'tel:+2348012345678' },
-  { icon: Phone, label: 'Admissions', value: '+234 801 234 5679', href: 'tel:+2348012345679' },
-  { icon: Mail, label: 'General Enquiries', value: 'info@oakridgeacademy.edu', href: 'mailto:info@oakridgeacademy.edu' },
-  { icon: Mail, label: 'Admissions', value: 'admissions@oakridgeacademy.edu', href: 'mailto:admissions@oakridgeacademy.edu' },
-  { icon: MapPin, label: 'Address', value: '12 Innovation Drive, Victoria Island, Lagos, Nigeria', href: 'https://maps.google.com' },
-  { icon: Clock, label: 'Office Hours', value: 'Mon–Fri: 7:30 AM – 5:00 PM', href: null },
-]
-
 export function ContactPage() {
+  const { settings } = useTenantSettings()
+  const { branding, pages } = settings
+  const contactInfo = [
+    { icon: Phone, label: 'Main Office', value: branding.phone, href: `tel:${branding.phone.replace(/\s/g, '')}` },
+    { icon: Mail, label: 'General Enquiries', value: branding.email, href: `mailto:${branding.email}` },
+    { icon: MapPin, label: 'Address', value: branding.address, href: 'https://maps.google.com' },
+    { icon: Clock, label: 'Office Hours', value: branding.office_hours, href: null },
+  ]
   const [form, setForm] = useState({ full_name: '', email: '', phone: '', subject: '', message: '', inquiry_type: 'general' })
   const [sending, setSending] = useState(false)
   const [sent, setSent] = useState(false)
@@ -40,7 +40,7 @@ export function ContactPage() {
           <div className="text-xs font-semibold text-brand-400 uppercase tracking-wider mb-3">Contact Us</div>
           <h1 className="text-5xl font-extrabold text-white mb-4">Get in Touch</h1>
           <p className="text-xl text-slate-300 max-w-2xl">
-            We'd love to hear from you. Whether you're a prospective family, current parent, or alumni — our team is here to help.
+            {pages.contact_intro}
           </p>
         </div>
       </section>

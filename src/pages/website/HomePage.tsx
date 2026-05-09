@@ -1,13 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { ArrowRight, BookOpen, Award, ChartBar as BarChart2, Shield, Brain, Globe, ChevronRight, GraduationCap, Users, Star, CircleCheck, Zap, Calendar, Newspaper, CirclePlay as PlayCircle } from 'lucide-react'
 import { WebsiteLayout } from '@/components/website/WebsiteLayout'
-
-const stats = [
-  { value: '1,200+', label: 'Students Enrolled' },
-  { value: '97%', label: 'IGCSE Pass Rate' },
-  { value: '45+', label: 'Years of Excellence' },
-  { value: '98%', label: 'University Placement' },
-]
+import { useTenantSettings } from '@/hooks/useTenantSettings'
 
 const features = [
   { icon: BookOpen, title: 'World-Class Curriculum', desc: 'Cambridge IGCSE, A-Levels, and Nigerian National Curriculum delivered by expert educators.' },
@@ -56,13 +50,16 @@ const testimonials = [
 ]
 
 export function HomePage() {
+  const { settings } = useTenantSettings()
+  const { homepage, branding } = settings
+
   return (
     <WebsiteLayout>
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-brand-900 min-h-[90vh] flex items-center">
         <div
           className="absolute inset-0 opacity-20"
-          style={{ backgroundImage: `url('https://images.pexels.com/photos/256431/pexels-photo-256431.jpeg')`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+          style={{ backgroundImage: `url('${homepage.hero_image_url || 'https://images.pexels.com/photos/256431/pexels-photo-256431.jpeg'}')`, backgroundSize: 'cover', backgroundPosition: 'center' }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-transparent" />
 
@@ -74,13 +71,11 @@ export function HomePage() {
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.06] tracking-tight mb-6">
-              Empowering<br />
-              <span className="text-amber-400">Tomorrow's</span><br />
-              Leaders Today
+              {homepage.hero_headline}
             </h1>
 
             <p className="text-xl text-slate-300 leading-relaxed mb-10 max-w-xl">
-              A world-class education for students from Kindergarten through Sixth Form, combining Cambridge excellence with a rich co-curricular life.
+              {homepage.hero_subtext}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -105,17 +100,19 @@ export function HomePage() {
         {/* Principal welcome card */}
         <div className="hidden xl:block absolute right-12 top-1/2 -translate-y-1/2 w-72">
           <div className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-6 text-white">
-            <img
-              src="https://images.pexels.com/photos/5212317/pexels-photo-5212317.jpeg"
-              alt="Principal"
-              className="w-16 h-16 rounded-full object-cover mb-4 border-2 border-white/30"
-            />
+            {homepage.principal_photo_url && (
+              <img
+                src={homepage.principal_photo_url}
+                alt={homepage.principal_name}
+                className="w-16 h-16 rounded-full object-cover mb-4 border-2 border-white/30"
+              />
+            )}
             <blockquote className="text-sm leading-relaxed text-slate-200 italic mb-4">
-              "At Oakridge, we don't just teach subjects — we build character, ignite curiosity, and prepare young people for a rapidly changing world."
+              "{homepage.principal_quote}"
             </blockquote>
             <div>
-              <div className="text-sm font-semibold">Dr. Chidera Adeyemi</div>
-              <div className="text-xs text-slate-400">Principal, Oakridge Academy</div>
+              <div className="text-sm font-semibold">{homepage.principal_name}</div>
+              <div className="text-xs text-slate-400">{homepage.principal_title}, {branding.school_name}</div>
             </div>
           </div>
         </div>
@@ -125,7 +122,7 @@ export function HomePage() {
       <section className="bg-brand-600 py-12">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {stats.map(s => (
+            {homepage.stats.map(s => (
               <div key={s.label}>
                 <div className="text-4xl font-extrabold text-white mb-1">{s.value}</div>
                 <div className="text-brand-200 text-sm">{s.label}</div>

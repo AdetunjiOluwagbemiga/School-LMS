@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from '@tanstack/react-router'
 import { BookOpen, Menu, X, ChevronDown, Phone, Mail, MapPin } from 'lucide-react'
 import { ChatbotWidget } from './ChatbotWidget'
+import { useTenantSettings } from '@/hooks/useTenantSettings'
 
 const navLinks = [
   { label: 'About', to: '/about' },
@@ -29,6 +30,8 @@ export function WebsiteLayout({ children }: WebsiteLayoutProps) {
   const [scrolled, setScrolled] = useState(false)
   const [dropdown, setDropdown] = useState<string | null>(null)
   const location = useLocation()
+  const { settings } = useTenantSettings()
+  const { school_name, tagline, phone, email, address } = settings.branding
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16)
@@ -47,9 +50,9 @@ export function WebsiteLayout({ children }: WebsiteLayoutProps) {
       <div className="hidden md:block bg-slate-900 text-slate-300 text-xs">
         <div className="max-w-7xl mx-auto px-6 h-9 flex items-center justify-between gap-4">
           <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1.5"><Phone className="w-3 h-3" /> +234 801 234 5678</span>
-            <span className="flex items-center gap-1.5"><Mail className="w-3 h-3" /> info@oakridgeacademy.edu</span>
-            <span className="flex items-center gap-1.5"><MapPin className="w-3 h-3" /> 12 Innovation Drive, Victoria Island, Lagos</span>
+            <span className="flex items-center gap-1.5"><Phone className="w-3 h-3" /> {phone}</span>
+            <span className="flex items-center gap-1.5"><Mail className="w-3 h-3" /> {email}</span>
+            <span className="flex items-center gap-1.5"><MapPin className="w-3 h-3" /> {address}</span>
           </div>
           <div className="flex items-center gap-4">
             <span className="text-slate-500">|</span>
@@ -67,8 +70,8 @@ export function WebsiteLayout({ children }: WebsiteLayoutProps) {
               <BookOpen className="w-5 h-5 text-white" />
             </div>
             <div>
-              <div className="text-base font-extrabold text-slate-900 leading-tight tracking-tight">Oakridge Academy</div>
-              <div className="text-[10px] text-slate-500 leading-none font-medium">Excellence in Education</div>
+              <div className="text-base font-extrabold text-slate-900 leading-tight tracking-tight">{school_name}</div>
+              <div className="text-[10px] text-slate-500 leading-none font-medium">{tagline}</div>
             </div>
           </Link>
 
@@ -194,15 +197,13 @@ export function WebsiteLayout({ children }: WebsiteLayoutProps) {
                 <div className="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center">
                   <BookOpen className="w-4 h-4 text-white" />
                 </div>
-                <span className="font-bold text-white">Oakridge Academy</span>
+                <span className="font-bold text-white">{school_name}</span>
               </div>
-              <p className="text-sm leading-relaxed text-slate-400">
-                Empowering the next generation of leaders through rigorous academics, character development, and innovation.
-              </p>
+              <p className="text-sm leading-relaxed text-slate-400">{tagline}</p>
               <div className="mt-4 space-y-2 text-sm">
-                <div className="flex items-start gap-2"><Phone className="w-4 h-4 mt-0.5 shrink-0 text-slate-500" /><span>+234 801 234 5678</span></div>
-                <div className="flex items-start gap-2"><Mail className="w-4 h-4 mt-0.5 shrink-0 text-slate-500" /><span>info@oakridgeacademy.edu</span></div>
-                <div className="flex items-start gap-2"><MapPin className="w-4 h-4 mt-0.5 shrink-0 text-slate-500" /><span>12 Innovation Drive, Victoria Island, Lagos</span></div>
+                <div className="flex items-start gap-2"><Phone className="w-4 h-4 mt-0.5 shrink-0 text-slate-500" /><span>{phone}</span></div>
+                <div className="flex items-start gap-2"><Mail className="w-4 h-4 mt-0.5 shrink-0 text-slate-500" /><span>{email}</span></div>
+                <div className="flex items-start gap-2"><MapPin className="w-4 h-4 mt-0.5 shrink-0 text-slate-500" /><span>{address}</span></div>
               </div>
             </div>
 
@@ -250,7 +251,7 @@ export function WebsiteLayout({ children }: WebsiteLayoutProps) {
           </div>
 
           <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-            <span>© 2026 Oakridge Academy. All rights reserved.</span>
+            <span>© 2026 {school_name}. All rights reserved.</span>
             <div className="flex items-center gap-4">
               <span>Accredited by the British Council</span>
               <span>·</span>
