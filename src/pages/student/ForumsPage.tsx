@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from '@tanstack/react-router'
-import { MessageSquare, Plus, Pin, CheckCircle2, Clock, ChevronRight, Search, ThumbsUp, Eye } from 'lucide-react'
+import { MessageSquare, Plus, Pin, CircleCheck as CheckCircle2, Clock, ChevronRight, Search, ThumbsUp, Eye } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'

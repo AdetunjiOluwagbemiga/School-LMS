@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from '@tanstack/react-router'
-import {
-  BookOpen, Users, ClipboardList, TrendingUp, AlertTriangle,
-  ChevronRight, BarChart3, CheckCircle2, Clock
-} from 'lucide-react'
+import { BookOpen, Users, ClipboardList, TrendingUp, TriangleAlert as AlertTriangle, ChevronRight, ChartBar as BarChart3, CircleCheck as CheckCircle2, Clock } from 'lucide-react'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'

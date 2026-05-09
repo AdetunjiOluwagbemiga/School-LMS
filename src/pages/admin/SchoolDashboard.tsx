@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from '@tanstack/react-router'
-import { Users, BookOpen, Shield, TrendingUp, ChevronRight, Activity, Star, CheckCircle2 } from 'lucide-react'
+import { Users, BookOpen, Shield, TrendingUp, ChevronRight, Activity, Star, CircleCheck as CheckCircle2 } from 'lucide-react'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'

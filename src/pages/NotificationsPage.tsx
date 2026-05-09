@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Bell, CheckCheck, BookOpen, Award, AlertTriangle, MessageSquare, CheckCircle2 } from 'lucide-react'
+import { Bell, CheckCheck, BookOpen, Award, TriangleAlert as AlertTriangle, MessageSquare, CircleCheck as CheckCircle2 } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'

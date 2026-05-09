@@ -1,4 +1,4 @@
-import { TrendingUp, BookOpen, Clock, Award, AlertCircle, CheckCircle2 } from 'lucide-react'
+import { TrendingUp, BookOpen, Clock, Award, CircleAlert as AlertCircle, CircleCheck as CheckCircle2 } from 'lucide-react'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'

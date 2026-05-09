@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Download, Search, Filter, CheckCircle2 } from 'lucide-react'
+import { Download, Search, Filter, CircleCheck as CheckCircle2 } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'

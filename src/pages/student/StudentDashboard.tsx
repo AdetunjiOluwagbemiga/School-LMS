@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from '@tanstack/react-router'
-import {
-  BookOpen, Award, TrendingUp, Clock, Flame, Target,
-  ChevronRight, Play, CheckCircle2, Star, Zap
-} from 'lucide-react'
+import { BookOpen, Award, TrendingUp, Clock, Flame, Target, ChevronRight, Play, CircleCheck as CheckCircle2, Star, Zap } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Progress } from '@/components/ui/progress'
 import { Badge } from '@/components/ui/badge'

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from '@tanstack/react-router'
-import { GraduationCap, Eye, EyeOff, AlertCircle } from 'lucide-react'
+import { GraduationCap, Eye, EyeOff, CircleAlert as AlertCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { supabase } from '@/lib/supabase'

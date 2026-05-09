@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Search, Plus, Filter, Mail, Shield, MoreVertical } from 'lucide-react'
+import { Search, Plus, Filter, Mail, Shield, MoveVertical as MoreVertical } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'

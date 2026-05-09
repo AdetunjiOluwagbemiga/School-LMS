@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link } from '@tanstack/react-router'
-import { ChevronLeft, ChevronRight, BookOpen, Video, CheckCircle2, Clock, Zap } from 'lucide-react'
+import { ChevronLeft, ChevronRight, BookOpen, Video, CircleCheck as CheckCircle2, Clock, Zap } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
 import { supabase } from '@/lib/supabase'
